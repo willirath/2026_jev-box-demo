@@ -18,6 +18,9 @@ draws the box only if the `noul` probability is at least 0.5.
 OpenRouter key, which goes straight from the browser to openrouter.ai.
 Locally: `python3 -m http.server -d public`.
 
+The example images load from Wikimedia Commons and Flickr. The page shows each
+image's author, license, and source from [public/credits.js](public/credits.js).
+
 ## Example run
 
 ```bash
