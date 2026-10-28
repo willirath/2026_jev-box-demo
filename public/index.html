@@ -38,11 +38,13 @@ and a <code>box</code> question ("where is it?"). Your key is sent only to openr
 <label for="file">Image file</label>
 <input id="file" type="file" accept="image/*">
 <label for="url">…or image URL (host must allow CORS)</label>
-<input id="url" type="url" placeholder="https://...">
+<input id="url" type="url" placeholder="https://..."
+       value="https://live.staticflickr.com/5109/13475202474_d7753c9c04_b.jpg">
 
 <button id="go">Hotdog?</button>
 
 <div id="verdict"></div>
+<p id="note" class="small"></p>
 <div id="stage"><img id="img" alt=""><div id="box"></div></div>
 <pre id="raw"></pre>
 
@@ -89,28 +91,46 @@ async function classify(key, dataUri) {
   return r.json();
 }
 
+// Draw verdict, box (only for a hot dog: box questions always return a box), and raw JSON.
+function show(resp) {
+  const v = $("verdict"), box = $("box");
+  $("raw").textContent = JSON.stringify(resp, null, 2);
+  const p = resp.answers.hotdog.noul;
+  const yes = p >= 0.5;
+  v.className = yes ? "yes" : "no";
+  v.textContent = `${yes ? "Hotdog" : "Not hotdog"} (${Math.round(p * 100)}%)`;
+  const b = resp.answers.where && resp.answers.where.box;
+  if (yes && b) {
+    Object.assign(box.style, {
+      display: "block",
+      left: `${b.left * 100}%`, top: `${b.top * 100}%`,
+      width: `${(b.right - b.left) * 100}%`, height: `${(b.bottom - b.top) * 100}%`,
+    });
+  }
+}
+
+// Precomputed answer for the pre-filled URL, shown before the user enters a key.
+const PRESET = {
+  model: "typesafe/jev-1.14-20261014",
+  answers: {
+    hotdog: { type: "noul", noul: 0.79 },
+    where: { type: "box", box: { top: 0.19, bottom: 0.79, left: 0.32, right: 0.6 }, confidence: 0.5 },
+  },
+  usage: { input_tokens: 1501, output_tokens: 37, cost: 6.3042e-05 },
+};
+$("img").src = $("url").value;
+show(PRESET);
+$("note").textContent = "Precomputed example (Jev 1.14, 2026-10-28). Enter a key and click the button to run it live.";
+
 $("go").onclick = async () => {
   const key = $("key").value.trim();
-  const v = $("verdict"), box = $("box");
-  v.className = ""; box.style.display = "none"; $("raw").textContent = "";
+  const v = $("verdict");
+  v.className = ""; $("box").style.display = "none"; $("raw").textContent = ""; $("note").textContent = "";
   if (!key) { v.textContent = "Enter an OpenRouter key."; return; }
   try { $("remember").checked ? localStorage.setItem("orKey", key) : localStorage.removeItem("orKey"); } catch (e) {}
   try {
     v.textContent = "…";
-    const resp = await classify(key, await loadImage());
-    $("raw").textContent = JSON.stringify(resp, null, 2);
-    const p = resp.answers.hotdog.noul;
-    const yes = p >= 0.5;
-    v.className = yes ? "yes" : "no";
-    v.textContent = `${yes ? "Hotdog" : "Not hotdog"} (${Math.round(p * 100)}%)`;
-    const b = resp.answers.where && resp.answers.where.box;
-    if (yes && b) {
-      Object.assign(box.style, {
-        display: "block",
-        left: `${b.left * 100}%`, top: `${b.top * 100}%`,
-        width: `${(b.right - b.left) * 100}%`, height: `${(b.bottom - b.top) * 100}%`,
-      });
-    }
+    show(await classify(key, await loadImage()));
   } catch (e) {
     v.textContent = e.message;
   }
