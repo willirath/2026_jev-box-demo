@@ -1,5 +1,7 @@
 # Hotdog / Not Hotdog with Jev
 
+**App:** <https://2026-jev-box-demo-daaa4b.pages.geomar.de> (GEOMAR GitLab login required)
+
 A static page that classifies an image as hotdog or not hotdog with TypeSafe's
 Jev 1.14 through OpenRouter. It sends the image together with two questions:
 
