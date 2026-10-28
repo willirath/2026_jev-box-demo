@@ -36,6 +36,7 @@ browser contacts their servers. Live runs send the image and your key to OpenRou
 <p id="credit" class="small"></p>
 <div id="verdict"></div>
 <p id="note" class="small"></p>
+<p id="cost" class="small"></p>
 
 <button id="go">Hotdog?</button>
 <button id="next">Next example ▶</button>
@@ -103,6 +104,10 @@ async function classify(key, dataUri) {
 function show(resp) {
   const v = $("verdict"), box = $("box");
   $("raw").textContent = JSON.stringify(resp, null, 2);
+  const u = resp.usage;
+  $("cost").textContent = u && u.cost
+    ? `Cost: $${u.cost.toFixed(6)} for ${u.input_tokens} input tokens, about ${Math.round(1 / u.cost).toLocaleString("en")} images per $1.`
+    : "";
   const p = resp.answers.hotdog.noul;
   const yes = p >= 0.5;
   v.className = yes ? "yes" : "no";
@@ -153,7 +158,7 @@ showPreset(0);
 $("go").onclick = async () => {
   const key = $("key").value.trim();
   const v = $("verdict");
-  v.className = ""; $("box").style.display = "none"; $("raw").textContent = ""; $("note").textContent = "";
+  v.className = ""; $("box").style.display = "none"; $("raw").textContent = ""; $("note").textContent = ""; $("cost").textContent = "";
   if (!key) { v.textContent = "Enter an OpenRouter key."; return; }
   try { $("remember").checked ? localStorage.setItem("orKey", key) : localStorage.removeItem("orKey"); } catch (e) {}
   try {
