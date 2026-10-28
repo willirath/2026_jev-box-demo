@@ -4,8 +4,8 @@
 - **App:** <https://willirath.github.io/2026_jev-box-demo/>, or on GEOMAR GitLab Pages at
   <https://2026-jev-box-demo-daaa4b.pages.geomar.de>
 
-The copy at <https://git.geomar.de/willi-rath/2026_jev-box-demo> is archived and only
-serves the GEOMAR Pages app. Development continues on GitHub.
+The copy at <https://git.geomar.de/willi-rath/2026_jev-box-demo> only serves the
+GEOMAR Pages app. Development happens on GitHub.
 
 A static page that classifies an image as hotdog or not hotdog with TypeSafe's
 Jev 1.14 through OpenRouter. It sends the image together with two questions:
