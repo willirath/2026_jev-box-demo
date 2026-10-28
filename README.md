@@ -1,7 +1,11 @@
 # Hotdog / Not Hotdog with Jev
 
-**App:** <https://2026-jev-box-demo-daaa4b.pages.geomar.de>
-**Code:** <https://github.com/willirath/2026_jev-box-demo> (GitLab Pages builds the app from the GEOMAR GitLab copy)
+- **Code:** <https://github.com/willirath/2026_jev-box-demo>
+- **App:** <https://willirath.github.io/2026_jev-box-demo/>, or on GEOMAR GitLab Pages at
+  <https://2026-jev-box-demo-daaa4b.pages.geomar.de>
+
+The copy at <https://git.geomar.de/willi-rath/2026_jev-box-demo> is archived and only
+serves the GEOMAR Pages app. Development continues on GitHub.
 
 A static page that classifies an image as hotdog or not hotdog with TypeSafe's
 Jev 1.14 through OpenRouter. It sends the image together with two questions:
@@ -14,8 +18,9 @@ draws the box only if the `noul` probability is at least 0.5.
 
 ## Web app
 
-[public/index.html](public/index.html) is the whole app. GitLab Pages serves
-`public/` via [.gitlab-ci.yml](.gitlab-ci.yml). Each user enters their own
+[public/index.html](public/index.html) is the whole app. GitHub Pages serves
+`public/` via [.github/workflows/pages.yml](.github/workflows/pages.yml), and
+GitLab Pages via [.gitlab-ci.yml](.gitlab-ci.yml). Each user enters their own
 OpenRouter key, which goes straight from the browser to openrouter.ai.
 Locally: `python3 -m http.server -d public`.
 
