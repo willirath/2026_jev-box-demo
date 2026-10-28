@@ -22,7 +22,7 @@ Locally: `python3 -m http.server -d public`.
 
 ```bash
 cp .env.template .env      # then paste an OpenRouter key
-uv run run_examples.py     # reads examples.txt, writes annotated images to results/
+uv run run_examples.py     # reads examples.txt, writes results/ and public/presets.js
 ```
 
 Image input and box questions are early Jev features, and TypeSafe advises
@@ -30,9 +30,13 @@ against using them in production.
 
 ## Results (2026-10-28, `typesafe/jev-1.14`)
 
-[examples.txt](examples.txt) holds 5 hot dog images from a Wikimedia Commons
-search and 5 random Commons images. Jev got 9 of 10 right, for $0.0006 in total.
-The one miss is a tray of bare sausages with no bun (P = 0.05). That fits the
-question's definition of a hot dog as "a sausage served in a split bun".
-The boxes are rough. Two fit well. One covers nearly the whole frame, and one
-leaves out the bottom half of the bun.
+[examples.txt](examples.txt) holds one Flickr hot dog, 4 hot dog images from a
+Wikimedia Commons search, one tray of bare sausages from the same search, and 5
+random Commons images. Jev got 10 of 11 right, for $0.0007 in total. The page
+shows these canned answers, from [public/presets.js](public/presets.js), before a
+key is entered. The one miss is the tray of bare sausages with no bun (P = 0.06).
+That fits the question's definition of a hot dog as "a sausage served in a split bun".
+
+A visual check of an earlier run with the same images found the boxes rough. Two
+fit well. One covered nearly the whole frame, and one left out the bottom half of
+the bun. Reruns shift the probabilities by about 0.01.
