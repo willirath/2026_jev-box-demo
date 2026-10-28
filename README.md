@@ -1,0 +1,27 @@
+# Hotdog / Not Hotdog with Jev
+
+A static page that classifies an image as hotdog or not hotdog with TypeSafe's
+Jev 1.14 through OpenRouter. It sends the image together with two questions:
+
+- `hotdog`: a `noul` (yes/no) question; the answer is P(hot dog).
+- `where`: a `box` question; the answer is a bounding box as fractions of the image size.
+
+A box question always returns a box, even when there is no hot dog, so the page
+draws the box only if the `noul` probability is at least 0.5.
+
+## Web app
+
+[public/index.html](public/index.html) is the whole app. GitLab Pages serves
+`public/` via [.gitlab-ci.yml](.gitlab-ci.yml). Each user enters their own
+OpenRouter key, which goes straight from the browser to openrouter.ai.
+Locally: `python3 -m http.server -d public`.
+
+## Example run
+
+```bash
+cp .env.template .env      # then paste an OpenRouter key
+uv run run_examples.py     # reads examples.txt, writes annotated images to results/
+```
+
+Image input and box questions are early Jev features, and TypeSafe advises
+against using them in production.
