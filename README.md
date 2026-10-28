@@ -25,3 +25,11 @@ uv run run_examples.py     # reads examples.txt, writes annotated images to resu
 
 Image input and box questions are early Jev features, and TypeSafe advises
 against using them in production.
+
+## Results (2026-10-28, `typesafe/jev-1.14`)
+
+[examples.txt](examples.txt) holds 5 hot dog images from a Wikimedia Commons
+search and 5 random Commons images. Jev got 9 of 10 right, for $0.0006 in total.
+The one miss is a tray of bare sausages with no bun (P = 0.05). That fits the
+question's definition of a hot dog as "a sausage served in a split bun". The
+boxes enclose the hot dog on all four hot dog images.

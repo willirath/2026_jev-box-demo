@@ -1,1 +1,11 @@
 # <expected> <url>, expected is `hotdog` or `not`
+hotdog https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fb/Hotdog_-_Evan_Swigart.jpg/960px-Hotdog_-_Evan_Swigart.jpg
+hotdog https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a9/Hotdog_con_queso_y_pepinillos.jpg/960px-Hotdog_con_queso_y_pepinillos.jpg
+hotdog https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e4/Hotdog_with_fries-Delhi.jpg/960px-Hotdog_with_fries-Delhi.jpg
+hotdog https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ec/Hotdog_%C3%A0_la_choucroute.jpg/960px-Hotdog_%C3%A0_la_choucroute.jpg
+hotdog https://thumb.wikimedia.org/wikipedia/commons/thumb/2/28/NYC_Hotdog_cart_-_hot_dogs_closeup_cropped.png/960px-NYC_Hotdog_cart_-_hot_dogs_closeup_cropped.png
+not https://thumb.wikimedia.org/wikipedia/commons/thumb/4/48/Boulevard_Des_Airs_street_%28Florent_Dasque_-_Eyal%29.jpg/960px-Boulevard_Des_Airs_street_%28Florent_Dasque_-_Eyal%29.jpg
+not https://thumb.wikimedia.org/wikipedia/commons/thumb/9/90/Rosheim._Eglise_Saints-Pierre-et-Paul_Exterieur._Klokkentoren%2C_GD004440.jpg/960px-Rosheim._Eglise_Saints-Pierre-et-Paul_Exterieur._Klokkentoren%2C_GD004440.jpg
+not https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e7/Festa_Major_de_Gr%C3%A0cia_2024_-_darrer_dia_de_preparar_els_guarniments_-_20240814_155409.jpg/960px-Festa_Major_de_Gr%C3%A0cia_2024_-_darrer_dia_de_preparar_els_guarniments_-_20240814_155409.jpg
+not https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bd/Skryje_%28okres_Brno-venkov%29_-_l%C3%A1vka_u_ml%C3%BDna%2C_2024-10%2C_obr01.jpg/960px-Skryje_%28okres_Brno-venkov%29_-_l%C3%A1vka_u_ml%C3%BDna%2C_2024-10%2C_obr01.jpg
+not https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4f/As_we_taxied_2.jpg/960px-As_we_taxied_2.jpg
