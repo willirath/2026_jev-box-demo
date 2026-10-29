@@ -1,6 +1,7 @@
 # Hotdog / Not Hotdog with Jev
 
 - **Code:** <https://github.com/willirath/2026_jev-box-demo>
+- **Idea:** <https://risky.biz/RB854/>
 - **App:** <https://willirath.github.io/2026_jev-box-demo/>, or on GEOMAR GitLab Pages at
   <https://2026-jev-box-demo-daaa4b.pages.geomar.de>
 
